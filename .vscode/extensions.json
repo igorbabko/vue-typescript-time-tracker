@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    "vue.vscode-typescript-vue-plugin",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "yoavbls.pretty-ts-errors",
+    "bradlc.vscode-tailwindcss",
+    "vue.volar"
+  ]
+}
