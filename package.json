@@ -1,7 +1,8 @@
 {
-  "name": "ontrack",
+  "name": "time-tracker",
   "version": "0.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc && vite build",
@@ -23,7 +24,7 @@
     "eslint-plugin-vue": "^9.19.2",
     "postcss": "^8.4.32",
     "prettier": "^3.1.1",
-    "prettier-plugin-tailwindcss": "^0.5.9",
+    "prettier-plugin-tailwindcss": "^0.5.10",
     "tailwindcss": "^3.4.0",
     "typescript": "^5.3.3",
     "vite": "^5.0.10",
