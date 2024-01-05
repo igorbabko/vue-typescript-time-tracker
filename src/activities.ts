@@ -1,35 +1,51 @@
-import { ref, computed } from 'vue'
+import { computed, ref } from 'vue'
 import { HUNDRED_PERCENT } from './constants'
 
-export const activities = ref([])
+interface Activity {
+  id: string
+  name: string
+  secondsToComplete: number
+}
 
-export const trackedActivities = computed(() =>
-  activities.value.filter(({ secondsToComplete }) => secondsToComplete)
+interface ActivitySelectOption {
+  value: string
+  label: string
+}
+
+export const activities = ref<Activity[]>([])
+
+export const trackedActivities = computed<Activity[]>(() =>
+  activities.value.filter(({ secondsToComplete }): boolean => secondsToComplete !== 0)
 )
 
-export const activitySelectOptions = computed(() => generateActivitySelectOptions(activities.value))
+export const activitySelectOptions = computed<ActivitySelectOption[]>(() =>
+  generateActivitySelectOptions(activities.value)
+)
 
-export function initializeActivities(state) {
+export function initializeActivities(state: any): void {
   activities.value = state.activities || []
 }
 
-export function createActivity(activity) {
+export function createActivity(activity: Activity): void {
   activities.value.push(activity)
 }
 
-export function updateActivity(activity, fields) {
+export function updateActivity(activity: Activity, fields: any): Activity {
   return Object.assign(activity, fields)
 }
 
-export function deleteActivity(activity) {
+export function deleteActivity(activity: Activity): void {
   activities.value.splice(activities.value.indexOf(activity), 1)
 }
 
-export function calculateActivityCompletionPercentage({ secondsToComplete }, trackedSeconds) {
+export function calculateActivityCompletionPercentage(
+  { secondsToComplete }: Activity,
+  trackedSeconds: number
+): number {
   return Math.floor((trackedSeconds * HUNDRED_PERCENT) / secondsToComplete)
 }
 
-export function calculateCompletionPercentage(totalTrackedSeconds) {
+export function calculateCompletionPercentage(totalTrackedSeconds: number): number {
   return Math.floor((totalTrackedSeconds * HUNDRED_PERCENT) / totalActivitySecondsToComplete.value)
 }
 
@@ -39,6 +55,8 @@ const totalActivitySecondsToComplete = computed(() => {
     .reduce((total, seconds) => total + seconds, 0)
 })
 
-function generateActivitySelectOptions(activities) {
-  return activities.map((activity) => ({ value: activity.id, label: activity.name }))
+function generateActivitySelectOptions(activities: Activity[]): ActivitySelectOption[] {
+  return activities.map(
+    (activity): ActivitySelectOption => ({ value: activity.id, label: activity.name })
+  )
 }
