@@ -8,11 +8,23 @@ import {
 } from './constants'
 import { isNull } from './validators'
 
-export function formatSecondsWithSign(seconds) {
+enum ProgressColorClass {
+  RED = 'bg-red-500',
+  YELLOW = 'bg-yellow-500',
+  BLUE = 'bg-blue-500',
+  GREEN = 'bg-green-500'
+}
+
+interface PeriodSelectOption {
+  value: number
+  label: string
+}
+
+export function formatSecondsWithSign(seconds: number): string {
   return `${seconds >= 0 ? '+' : '-'}${formatSeconds(seconds)}`
 }
 
-export function formatSeconds(seconds) {
+export function formatSeconds(seconds: number): string {
   const date = new Date()
 
   date.setTime(Math.abs(seconds) * MILLISECONDS_IN_SECOND)
@@ -22,38 +34,40 @@ export function formatSeconds(seconds) {
   return utc.substring(utc.indexOf(':') - 2, utc.indexOf(':') + 6)
 }
 
-export function normalizeSelectValue(value) {
+export function normalizeSelectValue(value: any): any {
   return isNull(value) || isNaN(value) ? value : +value
 }
 
-export function getProgressColorClass(percentage) {
-  if (percentage < LOW_PERCENT) return 'bg-red-500'
-  if (percentage < MEDIUM_PERCENT) return 'bg-yellow-500'
-  if (percentage < HUNDRED_PERCENT) return 'bg-blue-500'
+export function getProgressColorClass(percentage: number): ProgressColorClass {
+  if (percentage < LOW_PERCENT) return ProgressColorClass.RED
+  if (percentage < MEDIUM_PERCENT) return ProgressColorClass.YELLOW
+  if (percentage < HUNDRED_PERCENT) return ProgressColorClass.BLUE
 
-  return 'bg-green-500'
+  return ProgressColorClass.GREEN
 }
 
-export function id() {
+export function id(): string {
   return Date.now().toString(36) + Math.random().toString(36).substring(2)
 }
 
-export function generatePeriodSelectOptions() {
+export function generatePeriodSelectOptions(): PeriodSelectOption[] {
   const periodsInMinutes = [
     15, 30, 45, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330, 360, 390, 420, 450, 480
   ]
 
-  return periodsInMinutes.map((periodInMinutes) => ({
-    value: periodInMinutes * SECONDS_IN_MINUTE,
-    label: generatePeriodSelectOptionsLabel(periodInMinutes)
-  }))
+  return periodsInMinutes.map(
+    (periodInMinutes): PeriodSelectOption => ({
+      value: periodInMinutes * SECONDS_IN_MINUTE,
+      label: generatePeriodSelectOptionsLabel(periodInMinutes)
+    })
+  )
 }
 
-function generatePeriodSelectOptionsLabel(periodInMinutes) {
+function generatePeriodSelectOptionsLabel(periodInMinutes: number): string {
   const hours = Math.floor(periodInMinutes / MINUTES_IN_HOUR)
     .toString()
-    .padStart(2, 0)
-  const minutes = (periodInMinutes % MINUTES_IN_HOUR).toString().padStart(2, 0)
+    .padStart(2, '0')
+  const minutes = (periodInMinutes % MINUTES_IN_HOUR).toString().padStart(2, '0')
 
   return `${hours}:${minutes}`
 }
