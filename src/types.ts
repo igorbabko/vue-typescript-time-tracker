@@ -8,6 +8,13 @@ export interface Activity {
   secondsToComplete: number
 }
 
+export interface TimelineItem {
+  hour: number
+  activityId: string | null
+  activitySeconds: number
+  isActive: boolean
+}
+
 export interface ActivitySelectOption {
   value: string
   label: string

@@ -2,14 +2,7 @@ import { computed, ref, watch } from 'vue'
 import { HOURS_IN_DAY, MIDNIGHT_HOUR } from './constants'
 import { endOfHour, isToday, now, toSeconds, today } from './time'
 import { stopTimelineItemTimer } from './timeline-item-timer'
-import type { Activity, State } from './types'
-
-interface TimelineItem {
-  hour: number
-  activityId: string | null
-  activitySeconds: number
-  isActive: boolean
-}
+import type { Activity, State, TimelineItem } from './types'
 
 export const timelineItemRefs = ref<any>([])
 
