@@ -4,26 +4,28 @@ import { isPageValid } from './validators'
 import TheTimeline from './pages/TheTimeline.vue'
 import TheActivities from './pages/TheActivities.vue'
 import TheProgress from './pages/TheProgress.vue'
+import type { Component } from 'vue'
+import type { PageName } from './types'
 
-export const routes = {
+export const routes: Record<PageName, Component> = {
   [PAGE_TIMELINE]: TheTimeline,
   [PAGE_ACTIVITIES]: TheActivities,
   [PAGE_PROGRESS]: TheProgress
 }
 
-export const currentPage = ref(normalizePageHash())
+export const currentPage = ref<PageName>(normalizePageHash())
 
-export function navigate(page) {
+export function navigate(page: PageName): void {
   document.body.scrollIntoView()
 
   currentPage.value = page
 }
 
-export function normalizePageHash() {
+export function normalizePageHash(): PageName {
   const page = window.location.hash.slice(1)
 
   if (isPageValid(page)) {
-    return page
+    return page as PageName
   }
 
   window.location.hash = PAGE_TIMELINE

@@ -1,7 +1,6 @@
 import { generatePeriodSelectOptions } from './functions'
 import { ICON_CHART_BAR, ICON_CLOCK, ICON_LIST_BULLET } from './icons'
-
-type PageName = typeof PAGE_TIMELINE | typeof PAGE_ACTIVITIES | typeof PAGE_PROGRESS
+import type { PageName } from './types'
 
 type ButtonType =
   | typeof BUTTON_TYPE_PRIMARY
