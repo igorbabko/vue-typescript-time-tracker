@@ -31,7 +31,7 @@ function deleteAndResetActivity(activity: Activity): void {
         placeholder="hh:mm"
         :options="PERIOD_SELECT_OPTIONS"
         :selected="activity.secondsToComplete || null"
-        @select="updateActivity(activity, { secondsToComplete: ($event as any) || 0 })"
+        @select="updateActivity(activity, { secondsToComplete: $event || 0 })"
       />
       <RemainingActivitySeconds v-if="activity.secondsToComplete" :activity="activity" />
     </div>
