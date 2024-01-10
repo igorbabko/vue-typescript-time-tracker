@@ -6,7 +6,6 @@ import {
   MINUTES_IN_HOUR,
   SECONDS_IN_MINUTE
 } from './constants'
-import { isNull } from './validators'
 import { ProgressColorClass } from './types'
 import type { SelectOption } from './types'
 
@@ -25,7 +24,7 @@ export function formatSeconds(seconds: number): string {
 }
 
 export function normalizeSelectValue(value: any): any {
-  return isNull(value) || isNaN(value) ? value : +value
+  return value === null || isNaN(value) ? value : +value
 }
 
 export function getProgressColorClass(percentage: number): ProgressColorClass {
