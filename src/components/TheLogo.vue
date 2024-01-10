@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { PAGE_TIMELINE } from '../constants'
-import { ICON_CLOCK } from '../icons'
 import { currentPage, navigate } from '../router'
 import { scrollToCurrentHour } from '../timeline-items'
+import { IconName } from '../types'
 import BaseIcon from './BaseIcon.vue'
 
 function handleClick(): void {
@@ -16,6 +16,6 @@ function handleClick(): void {
     @click="handleClick"
     class="origin-left scale-125 rounded bg-black p-1 text-white"
   >
-    <BaseIcon :name="ICON_CLOCK" class="h-5" />
+    <BaseIcon :name="IconName.CLOCK" class="h-5" />
   </a>
 </template>

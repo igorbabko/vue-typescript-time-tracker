@@ -1,5 +1,5 @@
 import { generatePeriodSelectOptions } from './functions'
-import { ICON_CHART_BAR, ICON_CLOCK, ICON_LIST_BULLET } from './icons'
+import { IconName } from './types'
 import type { ButtonType, NavItem } from './types'
 
 export const LOCAL_STORAGE_KEY = 'time-tracker'
@@ -11,15 +11,15 @@ export const PAGE_PROGRESS = 'progress'
 export const NAV_ITEMS: NavItem[] = [
   {
     page: PAGE_TIMELINE,
-    icon: ICON_CLOCK
+    icon: IconName.CLOCK
   },
   {
     page: PAGE_ACTIVITIES,
-    icon: ICON_LIST_BULLET
+    icon: IconName.LIST_BULLET
   },
   {
     page: PAGE_PROGRESS,
-    icon: ICON_CHART_BAR
+    icon: IconName.CHART_BAR
   }
 ]
 
