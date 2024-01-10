@@ -2,9 +2,10 @@ import { computed, ref, watch } from 'vue'
 import { HOURS_IN_DAY, MIDNIGHT_HOUR } from './constants'
 import { endOfHour, isToday, now, toSeconds, today } from './time'
 import { stopTimelineItemTimer } from './timeline-item-timer'
+import { type ComponentPublicInstance } from 'vue'
 import type { Activity, State, TimelineItem } from './types'
 
-export const timelineItemRefs = ref<any>([])
+export const timelineItemRefs = ref<ComponentPublicInstance[] | null>(null)
 
 export const timelineItems = ref<TimelineItem[]>([])
 
@@ -69,7 +70,10 @@ export function scrollToCurrentHour(isSmooth = false): void {
 }
 
 export function scrollToHour(hour: number, isSmooth = true): void {
-  const el: any = hour === MIDNIGHT_HOUR ? document.body : timelineItemRefs.value[hour - 1].$el
+  const el: HTMLBodyElement | HTMLLIElement =
+    hour === MIDNIGHT_HOUR || !timelineItemRefs.value
+      ? document.body
+      : timelineItemRefs.value[hour - 1].$el
 
   el.scrollIntoView({ behavior: isSmooth ? 'smooth' : 'instant' })
 }
