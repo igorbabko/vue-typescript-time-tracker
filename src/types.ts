@@ -1,15 +1,15 @@
-import {
-  BUTTON_TYPE_DANGER,
-  BUTTON_TYPE_NEUTRAL,
-  BUTTON_TYPE_PRIMARY,
-  BUTTON_TYPE_SUCCESS,
-  BUTTON_TYPE_WARNING
-} from './constants'
-
 export enum PageName {
   TIMELINE = 'timeline',
   ACTIVITIES = 'activities',
   PROGRESS = 'progress'
+}
+
+export enum ButtonType {
+  PRIMARY = 'primary',
+  SUCCESS = 'success',
+  WARNING = 'warning',
+  NEUTRAL = 'neutral',
+  DANGER = 'danger'
 }
 
 export type Hour =
@@ -50,13 +50,6 @@ export enum IconName {
   PLAY = 'Play',
   PLUS = 'Plus'
 }
-
-export type ButtonType =
-  | typeof BUTTON_TYPE_PRIMARY
-  | typeof BUTTON_TYPE_SUCCESS
-  | typeof BUTTON_TYPE_WARNING
-  | typeof BUTTON_TYPE_NEUTRAL
-  | typeof BUTTON_TYPE_DANGER
 
 export interface Activity {
   id: string
