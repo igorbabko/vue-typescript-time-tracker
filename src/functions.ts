@@ -23,8 +23,8 @@ export function formatSeconds(seconds: number): string {
   return utc.substring(utc.indexOf(':') - 2, utc.indexOf(':') + 6)
 }
 
-export function normalizeSelectValue(value: any): any {
-  return value === null || isNaN(value) ? value : +value
+export function normalizeSelectValue(value: string | null): number | string | null {
+  return value === null || isNaN(Number(value)) ? value : +value
 }
 
 export function getProgressColorClass(percentage: number): ProgressColorClass {
