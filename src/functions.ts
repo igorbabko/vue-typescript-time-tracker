@@ -6,19 +6,8 @@ import {
   MINUTES_IN_HOUR,
   SECONDS_IN_MINUTE
 } from './constants'
+import { ProgressColorClass, type PeriodSelectOption } from './types'
 import { isNull } from './validators'
-
-enum ProgressColorClass {
-  RED = 'bg-red-500',
-  YELLOW = 'bg-yellow-500',
-  BLUE = 'bg-blue-500',
-  GREEN = 'bg-green-500'
-}
-
-interface PeriodSelectOption {
-  value: number
-  label: string
-}
 
 export function formatSecondsWithSign(seconds: number): string {
   return `${seconds >= 0 ? '+' : '-'}${formatSeconds(seconds)}`
