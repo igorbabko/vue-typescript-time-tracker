@@ -1,9 +1,9 @@
 import {
+  BUTTON_TYPE_DANGER,
+  BUTTON_TYPE_NEUTRAL,
   BUTTON_TYPE_PRIMARY,
   BUTTON_TYPE_SUCCESS,
   BUTTON_TYPE_WARNING,
-  BUTTON_TYPE_DANGER,
-  BUTTON_TYPE_NEUTRAL,
   PAGE_ACTIVITIES,
   PAGE_PROGRESS,
   PAGE_TIMELINE
@@ -27,7 +27,7 @@ export interface TimelineItem {
 
 export interface NavItem {
   page: PageName
-  icon: any
+  icon: string
 }
 
 export interface Activity {
