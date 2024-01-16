@@ -20,7 +20,7 @@ export type ButtonType =
 
 export interface TimelineItem {
   hour: number
-  activityId: string | null
+  activityId: Activity['id'] | null
   activitySeconds: number
   isActive: boolean
 }
@@ -36,18 +36,13 @@ export interface Activity {
   secondsToComplete: number
 }
 
-export interface ActivitySelectOption {
-  value: string
-  label: string
-}
-
-export interface PeriodSelectOption {
-  value: number
+export interface SelectOption<T = string> {
+  value: T
   label: string
 }
 
 export interface State {
-  timelineItems: any
+  timelineItems: TimelineItem[]
   activities: Activity[]
   lastActiveAt: Date
 }
