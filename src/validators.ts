@@ -9,10 +9,6 @@ export function isIconValid(icon: any): boolean {
   return Object.keys(ICONS).includes(icon)
 }
 
-export function isNavItemValid(navItem: any): boolean {
-  return NAV_ITEMS.includes(navItem)
-}
-
 export function isTimelineItemValid({ hour }: any): boolean {
   return isHourValid(hour)
 }
