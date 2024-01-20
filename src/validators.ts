@@ -29,24 +29,12 @@ export function isHourValid(hour: any): boolean {
   return isNumber(hour) && isBetween(hour, MIDNIGHT_HOUR, HOURS_IN_DAY - 1)
 }
 
-export function validateSelectOptions(options: any): boolean {
-  return options.every(isSelectOptionValid)
-}
-
 export function isUndefinedOrNull(value: any): boolean {
   return isUndefined(value) || isNull(value)
 }
 
-export function isSelectValueValid(value: any): boolean {
-  return isNotEmptyString(value) || isNumberOrNull(value)
-}
-
 export function isNull(value: any): boolean {
   return value === null
-}
-
-function isNumberOrNull(value: any): boolean {
-  return isNumber(value) || isNull(value)
 }
 
 function isUndefined(value: any): boolean {
@@ -55,10 +43,6 @@ function isUndefined(value: any): boolean {
 
 function isNumber(value: any): boolean {
   return typeof value === 'number'
-}
-
-function isSelectOptionValid({ value, label }: any): boolean {
-  return (isNumber(value) || isNotEmptyString(value)) && isNotEmptyString(label)
 }
 
 function isBetween(value: any, start: any, end: any): boolean {
