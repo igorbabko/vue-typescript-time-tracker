@@ -9,6 +9,32 @@ import {
   PAGE_TIMELINE
 } from './constants'
 
+export type Hour =
+  | 0
+  | 1
+  | 2
+  | 3
+  | 4
+  | 5
+  | 6
+  | 7
+  | 8
+  | 9
+  | 10
+  | 11
+  | 12
+  | 13
+  | 14
+  | 15
+  | 16
+  | 17
+  | 18
+  | 19
+  | 20
+  | 21
+  | 22
+  | 23
+
 export type PageName = typeof PAGE_TIMELINE | typeof PAGE_ACTIVITIES | typeof PAGE_PROGRESS
 
 export type ButtonType =
@@ -19,7 +45,7 @@ export type ButtonType =
   | typeof BUTTON_TYPE_DANGER
 
 export interface TimelineItem {
-  hour: number
+  hour: Hour
   activityId: Activity['id'] | null
   activitySeconds: number
   isActive: boolean
