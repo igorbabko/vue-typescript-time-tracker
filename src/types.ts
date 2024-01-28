@@ -3,11 +3,14 @@ import {
   BUTTON_TYPE_NEUTRAL,
   BUTTON_TYPE_PRIMARY,
   BUTTON_TYPE_SUCCESS,
-  BUTTON_TYPE_WARNING,
-  PAGE_ACTIVITIES,
-  PAGE_PROGRESS,
-  PAGE_TIMELINE
+  BUTTON_TYPE_WARNING
 } from './constants'
+
+export enum PageName {
+  TIMELINE = 'timeline',
+  ACTIVITIES = 'activities',
+  PROGRESS = 'progress'
+}
 
 export type Hour =
   | 0
@@ -47,8 +50,6 @@ export enum IconName {
   PLAY = 'Play',
   PLUS = 'Plus'
 }
-
-export type PageName = typeof PAGE_TIMELINE | typeof PAGE_ACTIVITIES | typeof PAGE_PROGRESS
 
 export type ButtonType =
   | typeof BUTTON_TYPE_PRIMARY
