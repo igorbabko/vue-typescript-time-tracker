@@ -1,13 +1,11 @@
 <script setup lang="ts" generic="T extends number | string">
-import { computed } from 'vue'
 import { BUTTON_TYPE_NEUTRAL } from '../constants'
 import { normalizeSelectValue } from '../functions'
-import { isUndefinedOrNull } from '../validators'
 import BaseButton from './BaseButton.vue'
 import BaseIcon from './BaseIcon.vue'
 import { IconName, type SelectOption } from '../types'
 
-const props = defineProps<{
+defineProps<{
   options: SelectOption<T>[]
   selected: T | null
   placeholder: string
@@ -16,8 +14,6 @@ const props = defineProps<{
 const emit = defineEmits<{
   select: [value: T | null]
 }>()
-
-const isNotSelected = computed((): boolean => isUndefinedOrNull(props.selected))
 
 function select(value: string | null): void {
   emit('select', normalizeSelectValue(value))
@@ -33,7 +29,7 @@ function select(value: string | null): void {
       class="w-full truncate rounded bg-gray-100 px-2 py-1 text-2xl"
       @change="select(($event.target as HTMLSelectElement).value)"
     >
-      <option :selected="isNotSelected" disabled value="">
+      <option :selected="selected === null" disabled value="">
         {{ placeholder }}
       </option>
       <option
